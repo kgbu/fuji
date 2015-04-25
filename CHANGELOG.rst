@@ -5,7 +5,7 @@ ChangeLog
 0.2.0
 =====
 
-**Paied support and customize has been started**
+**Paid support and customize has been started**
 
 :release: 2015-04-22
 
@@ -68,7 +68,7 @@ ChangeLog
 
 - Serial port device
 
-  - Acquire real sensro data from EnOcean Device
+  - Acquire real sensor data from EnOcean Device
 
 - Dummy Device
 - MQTT 3.1

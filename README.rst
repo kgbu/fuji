@@ -30,7 +30,7 @@ Supported Hardware
 - `Intel Edison <http://www.intel.com/content/www/us/en/do-it-yourself/edison.html?_ga=1.251267654.1109522025.1429502791>`_
 - Linux amd64/i386
 
-Comming Soon
+Coming Soon
 
 - Mac OS X
 - FreeBSD
