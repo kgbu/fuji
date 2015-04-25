@@ -59,7 +59,7 @@ For Armadillo-IoT
 
 :tar.gz File: fuji-gw_0.2.0_arm5.tar.gz
 
-(Note:) If you want to embed Fuji to statup image, please refer `Armadillo-IoT Gateway Standard manula <http://manual.atmark-techno.com/armadillo-iot/armadillo-iotg-std_product_manual_ja-1.1.1/>`_ of Atmark-Techno.
+(Note:) If you want to embed Fuji to startup image, please refer `Armadillo-IoT Gateway Standard manual <http://manual.atmark-techno.com/armadillo-iot/armadillo-iotg-std_product_manual_ja-1.1.1/>`_ of Atmark-Techno.
 
 #. Download tar.gz on your PC
 #. Extract tar.gz to the current directory on your PC
@@ -97,7 +97,7 @@ For Intel Edison
     $ wget <packge url>
     $ opkg install fuji-gw_<Version>_edison_i386.ipk
 
-Build from sourcecode
+Build from source code
 ------------------------------
 
 #. Prepare go development environment.
@@ -111,7 +111,7 @@ Build from sourcecode
 Config example
 ==============
 
-A MQTT broker is required to check the Fuji is runnning. At this example, we will use `Sango<https://sango.shiguredo.jp >`_ which is an `MQTT as a Servce` produced by Shiguredo.
+A MQTT broker is required to check the Fuji is running. At this example, we will use `Sango<https://sango.shiguredo.jp >`_ which is an `MQTT as a Servce` produced by Shiguredo.
 
 Before setting up Fuji, please access the Sango page and Sign up using your own GitHub account.
 
