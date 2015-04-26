@@ -2,6 +2,13 @@
 ChangeLog
 #########
 
+0.2.1
+=====
+
+:release: TDB
+
+- Fixed ARM5 and ARM7 build settings
+
 0.2.0
 =====
 
