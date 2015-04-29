@@ -10,7 +10,7 @@ FPM = fpm
 REPO="github.com/shiguredo/fuji/cmd/fuji"
 TEST_LIST := tests
 
-TAG=0.2.0
+TAG=0.2.1
 ARTIFACTS=downloads
 BUILDDIR=build
 LDFLAGS=-ldflags "-X main.version `git describe --tags --always`"

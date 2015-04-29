@@ -5,7 +5,7 @@ ChangeLog
 0.2.1
 =====
 
-:release: TDB
+:release: 2015-04-29
 
 - Fixed ARM5 and ARM7 build settings
 
