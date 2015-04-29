@@ -2,7 +2,7 @@
 MQTT Gateway: Fuji
 ###########################
 
-:version: 0.2.0
+:version: 0.2.1
 
 .. image:: https://circleci.com/gh/shiguredo/fuji/tree/develop.svg?style=svg&circle-token=203d959fffaf8dcdc0c68642dde5329e55a47792
     :target: https://circleci.com/gh/shiguredo/fuji/tree/develop
@@ -28,13 +28,27 @@ Supported Hardware
 - `Raspberry Pi <http://www.raspberrypi.org/>`_ series
 - `Armadillo-IoT <http://armadillo.atmark-techno.com/armadillo-iot>`_
 - `Intel Edison <http://www.intel.com/content/www/us/en/do-it-yourself/edison.html?_ga=1.251267654.1109522025.1429502791>`_
-- Linux i686/i386
+- Linux amd64/i386
 
-Comming Soon
+Coming Soon
 
 - Mac OS X
 - FreeBSD
 - Windows (7 or later)
+
+Downloads
+=========
+
+:URL: https://github.com/shiguredo/fuji/releases/tag/0.2.1
+
+- `fuji-gw_0.2.1_arm5.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_arm5.tar.gz>`_
+- `fuji-gw_0.2.1_arm6.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_arm6.tar.gz>`_
+- `fuji-gw_0.2.1_arm7.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_arm7.tar.gz>`_
+- `fuji-gw_0.2.1_edison_386.ipk <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_edison_386.ipk>`_
+- `fuji-gw_0.2.1_linux_386.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_linux_386.tar.gz>`_
+- `fuji-gw_0.2.1_linux_amd64.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_linux_amd64.tar.gz>`_
+- `fuji-gw_0.2.1_raspi2_arm7.deb <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_raspi2_arm7.deb>`_
+- `fuji-gw_0.2.1_raspi_arm6.deb <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_raspi_arm6.deb>`_
 
 ChangeLog
 =========

@@ -10,7 +10,7 @@ FPM = fpm
 REPO="github.com/shiguredo/fuji/cmd/fuji"
 TEST_LIST := tests
 
-TAG=0.2.0
+TAG=0.2.1
 ARTIFACTS=downloads
 BUILDDIR=build
 LDFLAGS=-ldflags "-X main.version `git describe --tags --always`"
@@ -45,14 +45,14 @@ arm5: deps
 
 arm6: deps
 	sudo GOARM=6 PATH=${SUDOPATH} ${GOXPATH} -build-toolchain -osarch=linux/arm
-	GOARM=5 gox $(LDFLAGS) -os="linux" -arch="arm" -output=$(BUILDDIR)/arm6/fuji/fuji-gw $(REPO)
+	GOARM=6 gox $(LDFLAGS) -os="linux" -arch="arm" -output=$(BUILDDIR)/arm6/fuji/fuji-gw $(REPO)
 	cp -p packages/config.simple.ini.example $(BUILDDIR)/arm6/fuji/config.ini.example
 	cd $(BUILDDIR)/arm6/ && tar zcvf ../../$(ARTIFACTS)/fuji-gw_$(TAG)_arm6.tar.gz fuji
 	echo 'linux arm6 build completed'
 
 arm7: deps
 	sudo GOARM=7 PATH=${SUDOPATH} ${GOXPATH} -build-toolchain -osarch=linux/arm
-	GOARM=5 gox $(LDFLAGS) -os="linux" -arch="arm" -output=$(BUILDDIR)/arm7/fuji/fuji-gw $(REPO)
+	GOARM=7 gox $(LDFLAGS) -os="linux" -arch="arm" -output=$(BUILDDIR)/arm7/fuji/fuji-gw $(REPO)
 	cp -p packages/config.simple.ini.example $(BUILDDIR)/arm7/fuji/config.ini.example
 	cd $(BUILDDIR)/arm7/ && tar zcvf ../../$(ARTIFACTS)/fuji-gw_$(TAG)_arm7.tar.gz fuji
 	echo 'linux arm7 build completed'

@@ -1,8 +1,8 @@
-############################################################
-Shiguredo MQTT gateway 'Fuji' Install Instruction
-############################################################
+#######################################
+MQTT gateway 'Fuji' Install Instruction
+#######################################
 
-:version: 0.2.0
+:version: 0.2.1
 
 Install
 ============
@@ -19,13 +19,13 @@ x86_64 Linux
 
 ::
 
-    $ tar xvfz fuji-gw_0.2.0_linux_amd64.tar.gz
+    $ tar xvfz fuji-gw_0.2.1_linux_amd64.tar.gz
 
 
 For Raspberry Pi (Raspbian)
 --------------------------------------
 
-:Package: fuji-gw_0.2.0_raspi_arm6.deb
+:Package: fuji-gw_0.2.1_raspi_arm6.deb
 
 #. Download a package
 #. Install by `dpkg -i`
@@ -37,13 +37,13 @@ Note: The fuji-gw process runs as a root.
 
 ::
 
-    $ dpkg -i fuji-gw_0.2.0_raspi_arm6.deb
+    $ dpkg -i fuji-gw_0.2.1_raspi_arm6.deb
     $ dpkg -i fuji-gw_<Version>_raspi_arm6.deb
 
 For Raspberry Pi 2(Raspbian)
 -----------------------------
 
-:Package: fuji-gw_0.2.0_raspi2_arm7.deb
+:Package: fuji-gw_0.2.1_raspi2_arm7.deb
 
 #. Download a package
 #. Install by `dpkg -i`
@@ -51,15 +51,15 @@ For Raspberry Pi 2(Raspbian)
 
 ::
 
-    $ dpkg -i fuji-gw_0.2.0_raspi2_arm7.deb
+    $ dpkg -i fuji-gw_0.2.1_raspi2_arm7.deb
     $ fuji-gw -c /etc/fuji-gw/config.ini
 
 For Armadillo-IoT
 --------------------
 
-:tar.gz File: fuji-gw_0.2.0_arm5.tar.gz
+:tar.gz File: fuji-gw_0.2.1_arm5.tar.gz
 
-(Note:) If you want to embed Fuji to statup image, please refer `Armadillo-IoT Gateway Standard manula <http://manual.atmark-techno.com/armadillo-iot/armadillo-iotg-std_product_manual_ja-1.1.1/>`_ of Atmark-Techno.
+(Note:) If you want to embed Fuji to startup image, please refer `Armadillo-IoT Gateway Standard manual <http://manual.atmark-techno.com/armadillo-iot/armadillo-iotg-std_product_manual_ja-1.1.1/>`_ of Atmark-Techno.
 
 #. Download tar.gz on your PC
 #. Extract tar.gz to the current directory on your PC
@@ -85,7 +85,7 @@ For Armadillo-IoT
 For Intel Edison
 -------------------
 
-:Package: fuji-gw_0.2.0_edison_386.ipk
+:Package: fuji-gw_0.2.1_edison_386.ipk
 
 #. Login to Intel Edison
 #. Download package          
@@ -97,7 +97,7 @@ For Intel Edison
     $ wget <packge url>
     $ opkg install fuji-gw_<Version>_edison_i386.ipk
 
-Build from sourcecode
+Build from source code
 ------------------------------
 
 #. Prepare go development environment.
@@ -111,7 +111,7 @@ Build from sourcecode
 Config example
 ==============
 
-A MQTT broker is required to check the Fuji is runnning. At this example, we will use `Sango<https://sango.shiguredo.jp >`_ which is an `MQTT as a Servce` produced by Shiguredo.
+A MQTT broker is required to check the Fuji is running. At this example, we will use `Sango<https://sango.shiguredo.jp >`_ which is an `MQTT as a Servce` produced by Shiguredo.
 
 Before setting up Fuji, please access the Sango page and Sign up using your own GitHub account.
 
