@@ -80,6 +80,15 @@ Development Logs
 `時雨堂 MQTT ゲートウェイ Fuji 開発ログ <https://gist.github.com/voluntas/23132cd3848af5b3ee1e>`_
 
 
+How To Release
+==================
+
+1. git flow release start x.y.z
+2. update TAG in Makefile
+3. update CHANGELOG.rst
+4. git flow release finish x.y.z
+5. git push
+
 License
 ========
 
