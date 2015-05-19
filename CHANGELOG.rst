@@ -3,6 +3,14 @@ ChangeLog
 #########
 
 
+0.2.3
+=====
+
+:release: 2015-05-19
+
+- Fixed versioning in downloads
+- Add "How To Release" to README.rst
+
 0.2.2
 =====
 
