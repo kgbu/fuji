@@ -124,16 +124,11 @@ func (device DummyDevice) Start(channel chan message.Message) error {
 
 // MainLoop is an mainloop of dummy device.
 func (device DummyDevice) MainLoop(channel chan message.Message) error {
-	timeout := make(chan bool, 1)
-	go func() { // timeout goroutine
-		for {
-			time.Sleep(time.Duration(device.Interval) * time.Second)
-			timeout <- true
-		}
-	}()
+	ticker := time.NewTicker(time.Duration(device.Interval) * time.Second)
+
 	for {
 		select {
-		case <-timeout:
+		case <-ticker.C:
 			msg := message.Message{
 				Sender:     device.Name,
 				Type:       device.Type,
@@ -149,8 +144,6 @@ func (device DummyDevice) MainLoop(channel chan message.Message) error {
 			}
 
 			log.Infof("msg reached to device, %v", msg)
-		default:
-			// do nothing
 		}
 	}
 	return nil
