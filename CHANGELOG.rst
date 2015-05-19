@@ -2,6 +2,15 @@
 ChangeLog
 #########
 
+
+0.2.2
+=====
+
+:release: 2015-05-19
+
+- Fixed consuming CPU bug in dummy device.
+
+
 0.2.1
 =====
 
