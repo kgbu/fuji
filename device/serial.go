@@ -249,8 +249,6 @@ func (device SerialDevice) Start(channel chan message.Message) error {
 					return err
 				}
 				log.Infof("written length: %d", num)
-			default:
-				// do nothing
 			}
 		}
 	}()
