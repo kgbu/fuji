@@ -2,7 +2,7 @@
 MQTT Gateway: Fuji
 ###########################
 
-:version: 0.2.1
+:version: 0.2.3
 
 .. image:: https://circleci.com/gh/shiguredo/fuji/tree/develop.svg?style=svg&circle-token=203d959fffaf8dcdc0c68642dde5329e55a47792
     :target: https://circleci.com/gh/shiguredo/fuji/tree/develop
@@ -39,16 +39,16 @@ Coming Soon
 Downloads
 =========
 
-:URL: https://github.com/shiguredo/fuji/releases/tag/0.2.1
+:URL: https://github.com/shiguredo/fuji/releases/tag/0.2.3
 
-- `fuji-gw_0.2.1_arm5.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_arm5.tar.gz>`_
-- `fuji-gw_0.2.1_arm6.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_arm6.tar.gz>`_
-- `fuji-gw_0.2.1_arm7.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_arm7.tar.gz>`_
-- `fuji-gw_0.2.1_edison_386.ipk <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_edison_386.ipk>`_
-- `fuji-gw_0.2.1_linux_386.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_linux_386.tar.gz>`_
-- `fuji-gw_0.2.1_linux_amd64.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_linux_amd64.tar.gz>`_
-- `fuji-gw_0.2.1_raspi2_arm7.deb <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_raspi2_arm7.deb>`_
-- `fuji-gw_0.2.1_raspi_arm6.deb <https://github.com/shiguredo/fuji/releases/download/0.2.1/fuji-gw_0.2.1_raspi_arm6.deb>`_
+- `fuji-gw_0.2.3_arm5.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_arm5.tar.gz>`_
+- `fuji-gw_0.2.3_arm6.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_arm6.tar.gz>`_
+- `fuji-gw_0.2.3_arm7.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_arm7.tar.gz>`_
+- `fuji-gw_0.2.3_edison_386.ipk <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_edison_386.ipk>`_
+- `fuji-gw_0.2.3_linux_386.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_linux_386.tar.gz>`_
+- `fuji-gw_0.2.3_linux_amd64.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_linux_amd64.tar.gz>`_
+- `fuji-gw_0.2.3_raspi2_arm7.deb <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_raspi2_arm7.deb>`_
+- `fuji-gw_0.2.3_raspi_arm6.deb <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_raspi_arm6.deb>`_
 
 ChangeLog
 =========
