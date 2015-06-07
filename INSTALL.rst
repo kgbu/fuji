@@ -111,7 +111,7 @@ Build from source code
 Config example
 ==============
 
-A MQTT broker is required to check the Fuji is running. At this example, we will use `Sango<https://sango.shiguredo.jp >`_ which is an `MQTT as a Servce` produced by Shiguredo.
+A MQTT broker is required to check the Fuji is running. At this example, we will use `Sango <https://sango.shiguredo.jp>`_ which is an `MQTT as a Servce` produced by Shiguredo.
 
 Before setting up Fuji, please access the Sango page and Sign up using your own GitHub account.
 
@@ -201,7 +201,7 @@ Operation check using mqttcli
 ------------------------------------------------
 
 `mqttcli` is an tool which can Publish or Subscribe from command line easily.
-You can download from `this page<https://drone.io/github.com/shirou/mqttcli/files>`_ . There are some binary which includes Windows, Mac OS, Intel Edison and so on.
+You can download from `this page <https://drone.io/github.com/shirou/mqttcli/files>`_ . There are some binary which includes Windows, Mac OS, Intel Edison and so on.
 
 After download mqttcli, create setting file for mqttcli.
 
