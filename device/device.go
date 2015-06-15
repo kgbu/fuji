@@ -30,7 +30,7 @@ type Devicer interface {
 }
 
 // NewDevices is a factory method to create various kind of devices from ini.File
-func NewDevices(conf inidef.Config, brokers []*broker.Broker, devChan chan message.Message) ([]Devicer, error) {
+func NewDevices(conf inidef.Config, brokers []*broker.Broker, devChannels []DeviceChannel) ([]Devicer, error) {
 	var ret []Devicer
 
 	var err error
@@ -40,6 +40,10 @@ func NewDevices(conf inidef.Config, brokers []*broker.Broker, devChan chan messa
 		}
 
 		var device Devicer
+
+		devChan := NewDeviceChannel()
+		devChannels = append(devChannels, devChan)
+
 		switch section.Arg {
 		case "dummy":
 			device, err = NewDummyDevice(section, brokers, devChan)
