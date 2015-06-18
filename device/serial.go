@@ -43,7 +43,7 @@ type SerialDevice struct {
 	Interval   int    `validate:"min=0"`
 	Retain     bool
 	Subscribe  bool
-	DeviceChan DeviceChannel	// GW -> device
+	DeviceChan DeviceChannel // GW -> device
 }
 
 func (device SerialDevice) String() string {
@@ -236,7 +236,7 @@ func (device SerialDevice) Start(channel chan message.Message) error {
 					Body:       msgBuf,
 				}
 				channel <- msg
-			case msg, _ := <- device.DeviceChan.Chan:
+			case msg, _ := <-device.DeviceChan.Chan:
 				log.Infof("msg topic:, %v / %v", msg.Topic, device.Name)
 				if !strings.HasSuffix(msg.Topic, device.Name) {
 					continue

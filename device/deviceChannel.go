@@ -19,7 +19,7 @@ import (
 )
 
 const (
-	MaxDeviceChanBufferSize	= 20
+	MaxDeviceChanBufferSize = 20
 )
 
 type DeviceChannel struct {
@@ -34,7 +34,7 @@ func NewDeviceChannel() DeviceChannel {
 	return ch
 }
 
-func NewDeviceChannels() ([]DeviceChannel) {
+func NewDeviceChannels() []DeviceChannel {
 	channels := []DeviceChannel{}
 	return channels
 }

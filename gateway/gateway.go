@@ -38,10 +38,10 @@ type Gateway struct {
 	Devices []device.Devicer
 	Brokers broker.Brokers
 
-	MsgChan    chan message.Message // Broker -> GW
-	BrokerChan chan message.Message // GW -> Broker
-	CmdChan    chan string          // somewhere -> GW
-	DeviceChannels []device.DeviceChannel	// GW -> device
+	MsgChan        chan message.Message   // Broker -> GW
+	BrokerChan     chan message.Message   // GW -> Broker
+	CmdChan        chan string            // somewhere -> GW
+	DeviceChannels []device.DeviceChannel // GW -> device
 
 	MaxRetryCount int `validate:"min=1"`
 	RetryInterval int `validate:"min=1"`
@@ -75,13 +75,13 @@ func NewGateway(conf inidef.Config) (*Gateway, error) {
 	}
 
 	gw := Gateway{
-		Name:          section.Values["name"],
-		MsgChan:       make(chan message.Message, MaxMsgChanBufferSize),
-		BrokerChan:    make(chan message.Message, MaxBrokerChanBufferSize),
-		DeviceChannels:    device.NewDeviceChannels(),
-		CmdChan:       make(chan string),
-		MaxRetryCount: DefaultMaxRetryCount,
-		RetryInterval: DefaultRetryInterval,
+		Name:           section.Values["name"],
+		MsgChan:        make(chan message.Message, MaxMsgChanBufferSize),
+		BrokerChan:     make(chan message.Message, MaxBrokerChanBufferSize),
+		DeviceChannels: device.NewDeviceChannels(),
+		CmdChan:        make(chan string),
+		MaxRetryCount:  DefaultMaxRetryCount,
+		RetryInterval:  DefaultRetryInterval,
 	}
 
 	if m, ok := section.Values["max_retry_count"]; ok {

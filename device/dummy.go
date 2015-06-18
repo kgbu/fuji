@@ -41,7 +41,7 @@ type DummyDevice struct {
 	Type       string `validate:"max=256"`
 	Retain     bool
 	Subscribe  bool
-	DeviceChan DeviceChannel	// GW -> device
+	DeviceChan DeviceChannel // GW -> device
 }
 
 // String retruns dummy device information
@@ -138,7 +138,7 @@ func (device DummyDevice) MainLoop(channel chan message.Message) error {
 				BrokerName: device.BrokerName,
 			}
 			channel <- msg
-		case msg, _ := <- device.DeviceChan.Chan:
+		case msg, _ := <-device.DeviceChan.Chan:
 			if !strings.HasSuffix(msg.Topic, device.Name) {
 				continue
 			}
