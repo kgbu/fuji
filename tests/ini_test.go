@@ -59,7 +59,7 @@ func TestIniNewSerialDevices(t *testing.T) {
 	conf, err := inidef.LoadConfig("testing_conf.ini")
 	brokerList, err := broker.NewBrokers(conf, make(chan message.Message))
 	assert.Nil(err)
-	deviceList, err := device.NewDevices(conf, brokerList, make(chan message.Message))
+	deviceList, _, err := device.NewDevices(conf, brokerList)
 	assert.Nil(err)
 	assert.Equal(3, len(deviceList))
 }
@@ -71,7 +71,7 @@ func TestIniNewDummyDevice(t *testing.T) {
 	brokerList, err := broker.NewBrokers(conf, make(chan message.Message))
 	assert.Nil(err)
 
-	dummy, err := device.NewDummyDevice(conf.Sections[7], brokerList, make(chan message.Message))
+	dummy, err := device.NewDummyDevice(conf.Sections[7], brokerList, device.NewDeviceChannel())
 	assert.Nil(err)
 	assert.Equal("dummy", dummy.DeviceType())
 	assert.Equal(2, int(dummy.QoS))

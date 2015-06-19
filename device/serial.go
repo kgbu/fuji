@@ -43,7 +43,7 @@ type SerialDevice struct {
 	Interval   int    `validate:"min=0"`
 	Retain     bool
 	Subscribe  bool
-	DeviceChan chan message.Message // GW -> device
+	DeviceChan DeviceChannel // GW -> device
 }
 
 func (device SerialDevice) String() string {
@@ -56,7 +56,7 @@ func (device SerialDevice) String() string {
 
 // NewSerialDevice read inidef.ConfigSection and returnes SerialDevice.
 // If config validation failed, return error
-func NewSerialDevice(section inidef.ConfigSection, brokers []*broker.Broker, devChan chan message.Message) (SerialDevice, error) {
+func NewSerialDevice(section inidef.ConfigSection, brokers []*broker.Broker, devChan DeviceChannel) (SerialDevice, error) {
 	ret := SerialDevice{
 		Name:       section.Name,
 		DeviceChan: devChan,
@@ -236,7 +236,7 @@ func (device SerialDevice) Start(channel chan message.Message) error {
 					Body:       msgBuf,
 				}
 				channel <- msg
-			case msg, _ := <-device.DeviceChan:
+			case msg, _ := <-device.DeviceChan.Chan:
 				log.Infof("msg topic:, %v / %v", msg.Topic, device.Name)
 				if !strings.HasSuffix(msg.Topic, device.Name) {
 					continue

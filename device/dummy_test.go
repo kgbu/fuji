@@ -21,7 +21,6 @@ import (
 
 	"github.com/shiguredo/fuji/broker"
 	"github.com/shiguredo/fuji/inidef"
-	"github.com/shiguredo/fuji/message"
 )
 
 func TestNewDummyDevice(t *testing.T) {
@@ -38,7 +37,7 @@ func TestNewDummyDevice(t *testing.T) {
 	conf, err := inidef.LoadConfigByte([]byte(iniStr))
 	b1 := &broker.Broker{Name: "sango"}
 	brokers := []*broker.Broker{b1}
-	b, err := NewDummyDevice(conf.Sections[1], brokers, make(chan message.Message))
+	b, err := NewDummyDevice(conf.Sections[1], brokers, NewDeviceChannel())
 	assert.Nil(err)
 	assert.NotNil(b.Broker)
 	assert.Equal("dora", b.Name)
@@ -59,7 +58,7 @@ func TestNewDummyDeviceInvalidInterval(t *testing.T) {
 	conf, err := inidef.LoadConfigByte([]byte(iniStr))
 	b1 := &broker.Broker{Name: "sango"}
 	brokers := []*broker.Broker{b1}
-	_, err = NewDummyDevice(conf.Sections[1], brokers, make(chan message.Message))
+	_, err = NewDummyDevice(conf.Sections[1], brokers, NewDeviceChannel())
 	assert.NotNil(err)
 }
 
@@ -75,7 +74,7 @@ func TestNewDummyDeviceInvalidQoS(t *testing.T) {
 	conf, err := inidef.LoadConfigByte([]byte(iniStr))
 	b1 := &broker.Broker{Name: "sango"}
 	brokers := []*broker.Broker{b1}
-	_, err = NewDummyDevice(conf.Sections[1], brokers, make(chan message.Message))
+	_, err = NewDummyDevice(conf.Sections[1], brokers, NewDeviceChannel())
 	assert.NotNil(err)
 }
 
@@ -91,6 +90,6 @@ func TestNewDummyDeviceInvalidBroker(t *testing.T) {
 	conf, err := inidef.LoadConfigByte([]byte(iniStr))
 	b1 := &broker.Broker{Name: "sango"}
 	brokers := []*broker.Broker{b1}
-	_, err = NewDummyDevice(conf.Sections[1], brokers, make(chan message.Message))
+	_, err = NewDummyDevice(conf.Sections[1], brokers, NewDeviceChannel())
 	assert.NotNil(err)
 }

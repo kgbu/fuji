@@ -147,7 +147,7 @@ func generalIniRetainSerialDeviceTest(test iniRetainTestCase, t *testing.T) {
 	brokers, err := broker.NewBrokers(conf, make(chan message.Message))
 	assert.Nil(err)
 
-	devices, err := device.NewDevices(conf, brokers, make(chan message.Message))
+	devices, _, err := device.NewDevices(conf, brokers)
 	assert.Nil(err)
 	assert.Equal(1, len(devices))
 }
@@ -162,7 +162,7 @@ func generalIniRetainDummyDeviceTest(test iniRetainTestCase, t *testing.T) {
 	brokers, err := broker.NewBrokers(conf, make(chan message.Message))
 	assert.Nil(err)
 
-	dummy, err := device.NewDummyDevice(conf.Sections[2], brokers, make(chan message.Message))
+	dummy, err := device.NewDummyDevice(conf.Sections[2], brokers, device.NewDeviceChannel())
 	if test.expectedError == nil {
 		assert.Nil(err)
 		assert.NotNil(dummy)
