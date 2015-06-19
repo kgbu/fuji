@@ -48,7 +48,7 @@ func StartByFileWithChannel(conf inidef.Config, commandChannel chan string) erro
 	if err != nil {
 		log.Fatalf("broker(s) create error, %v", err)
 	}
-	deviceList, deviceChannels, err := device.NewDevices(conf, brokerList, gw.DeviceChannels)
+	deviceList, deviceChannels, err := device.NewDevices(conf, brokerList)
 	if err != nil {
 		log.Fatalf("device create error, %v", err)
 	}
