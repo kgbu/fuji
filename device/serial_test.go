@@ -21,7 +21,6 @@ import (
 
 	"github.com/shiguredo/fuji/broker"
 	"github.com/shiguredo/fuji/inidef"
-	"github.com/shiguredo/fuji/message"
 )
 
 func TestNewSerialDevice(t *testing.T) {
@@ -39,7 +38,7 @@ func TestNewSerialDevice(t *testing.T) {
 	conf, err := inidef.LoadConfigByte([]byte(iniStr))
 	b1 := &broker.Broker{Name: "sango"}
 	brokers := []*broker.Broker{b1}
-	b, err := NewSerialDevice(conf.Sections[1], brokers, make(chan message.Message))
+	b, err := NewSerialDevice(conf.Sections[1], brokers, NewDeviceChannel())
 	assert.Nil(err)
 	assert.NotNil(b.Broker)
 	assert.Equal("dora", b.Name)
@@ -62,7 +61,7 @@ func TestNewSerialDeviceNotSetSize(t *testing.T) {
 	conf, err := inidef.LoadConfigByte([]byte(iniStr))
 	b1 := &broker.Broker{Name: "sango"}
 	brokers := []*broker.Broker{b1}
-	b, err := NewSerialDevice(conf.Sections[1], brokers, make(chan message.Message))
+	b, err := NewSerialDevice(conf.Sections[1], brokers, NewDeviceChannel())
 	assert.Nil(err)
 	assert.NotNil(b.Broker)
 	assert.Equal("dora", b.Name)
@@ -82,7 +81,7 @@ func TestNewSerialDeviceInvalidInterval(t *testing.T) {
 	conf, err := inidef.LoadConfigByte([]byte(iniStr))
 	b1 := &broker.Broker{Name: "sango"}
 	brokers := []*broker.Broker{b1}
-	_, err = NewSerialDevice(conf.Sections[1], brokers, make(chan message.Message))
+	_, err = NewSerialDevice(conf.Sections[1], brokers, NewDeviceChannel())
 	assert.NotNil(err)
 }
 
@@ -97,7 +96,7 @@ func TestNewSerialDeviceInvalidQoS(t *testing.T) {
 	conf, err := inidef.LoadConfigByte([]byte(iniStr))
 	b1 := &broker.Broker{Name: "sango"}
 	brokers := []*broker.Broker{b1}
-	_, err = NewSerialDevice(conf.Sections[1], brokers, make(chan message.Message))
+	_, err = NewSerialDevice(conf.Sections[1], brokers, NewDeviceChannel())
 	assert.NotNil(err)
 }
 
@@ -112,7 +111,7 @@ func TestNewSerialDeviceInvalidBroker(t *testing.T) {
 	conf, err := inidef.LoadConfigByte([]byte(iniStr))
 	b1 := &broker.Broker{Name: "sango"}
 	brokers := []*broker.Broker{b1}
-	_, err = NewSerialDevice(conf.Sections[1], brokers, make(chan message.Message))
+	_, err = NewSerialDevice(conf.Sections[1], brokers, NewDeviceChannel())
 	assert.NotNil(err)
 }
 
@@ -128,7 +127,7 @@ func TestNewSerialDeviceInvalidBaud(t *testing.T) {
 	conf, err := inidef.LoadConfigByte([]byte(iniStr))
 	b1 := &broker.Broker{Name: "sango"}
 	brokers := []*broker.Broker{b1}
-	_, err = NewSerialDevice(conf.Sections[1], brokers, make(chan message.Message))
+	_, err = NewSerialDevice(conf.Sections[1], brokers, NewDeviceChannel())
 	assert.NotNil(err)
 }
 

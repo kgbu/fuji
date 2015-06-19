@@ -107,7 +107,9 @@ func TestRetainSubscribePublishClose(t *testing.T) {
 		t.Error("Cannot make BrokerList")
 	}
 
-	dummyDevice, err := device.NewDummyDevice(conf.Sections[3], brokerList, gw.DeviceChan)
+	devChan := device.NewDeviceChannel()
+	gw.DeviceChannels = append(gw.DeviceChannels, devChan)
+	dummyDevice, err := device.NewDummyDevice(conf.Sections[3], brokerList, devChan)
 	if err != nil {
 		t.Error("Cannot make DummyDeviceList")
 	}

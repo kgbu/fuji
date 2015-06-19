@@ -26,7 +26,7 @@ type DeviceChannel struct {
 	Chan chan message.Message
 }
 
-// NewDeviceChan is a factory method to return DeviceChannel
+// NewDeviceChannel is a factory method to return DeviceChannel
 func NewDeviceChannel() DeviceChannel {
 	ch := DeviceChannel{
 		Chan: make(chan message.Message, MaxDeviceChanBufferSize),
