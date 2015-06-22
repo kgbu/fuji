@@ -137,7 +137,7 @@ Since all user can use only topic under `<username>/#` on the Sango, set `topic_
         password = <sango password>
     
         retry_interval = 10
-        topic_prefix = <sango username>/
+        topic_prefix = <sango username>
     
     
     [device "test/dummy"]
@@ -182,7 +182,7 @@ This example is set like below.
         password = pass
     
         retry_interval = 10
-        topic_prefix = shiguredo@github/
+        topic_prefix = shiguredo@github
     
     
     [device "test/dummy"]
