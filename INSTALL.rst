@@ -217,12 +217,12 @@ settings.json::
 
 command::
 
-    $ mqttcli sub --conf settings.json  -t "<sango username>/<fuji gateway name>/Dummy"
+    $ mqttcli sub --conf settings.json  -t "<sango username>/<fuji gateway name>/<device name>/<device type>"
 
 
 example::
 
-    $ mqttcli sub --conf settings.json  -t "shiguredo@github/fuji/Dummy"
+    $ mqttcli sub --conf settings.json  -t "shiguredo@github/fuji/test/Dummy"
 
 If you confirm "Hello MQTT." message is sent every 10 sec, that's it.
 
