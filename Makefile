@@ -22,14 +22,15 @@ SUDOPATH=${PATH}
 
 all: build test raspi raspi2 edison armadillo
 
-doc:
+fmt:
 	go fmt ./...
+
+doc: fmt
 #	golint ./...
 	go build github.com/shiguredo/fuji/cmd/fuji
 	godoc github.com/shiguredo/fuji
 
-build: deps
-	go fmt ./...
+build: fmt deps
 #	golint ./...
 	go build
 	go build $(LDFLAGS) github.com/shiguredo/fuji/cmd/fuji
