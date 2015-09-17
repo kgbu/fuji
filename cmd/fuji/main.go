@@ -16,7 +16,9 @@
 package main
 
 import (
+	"fmt"
 	"os"
+	"runtime"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
@@ -46,8 +48,21 @@ func main() {
 		},
 	}
 
+	cli.VersionPrinter = printVersion
+
 	app.Action = Action
 	app.Run(os.Args)
+}
+
+func printVersion(c *cli.Context) {
+	fmt.Fprintf(c.App.Writer, `%v version %v
+Compiler: %s %s
+Copyright 2015 Shiguredo Inc. <fuji@shiguredo.jp>
+`,
+		c.App.Name,
+		c.App.Version,
+		runtime.Compiler,
+		runtime.Version())
 }
 
 func Action(c *cli.Context) {
