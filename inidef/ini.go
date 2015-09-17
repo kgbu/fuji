@@ -27,6 +27,11 @@ import (
 	"github.com/go-ini/ini"
 )
 
+var (
+	ReU0   *regexp.Regexp
+	ReWild *regexp.Regexp
+)
+
 type AnyError interface{}
 
 type Error string
@@ -37,6 +42,12 @@ func (e Error) Error() string {
 
 // NilOrString defines the value is nil or empty
 type NilOrString interface{}
+
+// init is automatically invoked at initial time.
+func init() {
+	ReU0 = regexp.MustCompile("\u0000")
+	ReWild = regexp.MustCompile("[+#]+")
+}
 
 func IsNil(str NilOrString) bool {
 	if str == nil {
@@ -62,12 +73,12 @@ func ValidMqttPublishTopic(v interface{}, param string) error {
 	if !utf8.ValidString(str.String()) {
 		return errors.New("not a valid UTF8 string")
 	}
-	reu0 := regexp.MustCompile("\u0000")
-	if reu0.FindString(str.String()) != "" {
+
+	if ReU0.FindString(str.String()) != "" {
 		return errors.New("Topic SHALL NOT include \\U0000 character")
 	}
-	rewild := regexp.MustCompile("[+#]+")
-	if rewild.FindString(str.String()) != "" {
+
+	if ReWild.FindString(str.String()) != "" {
 		return errors.New("SHALL NOT MQTT pub-topic include wildard character")
 	}
 	return nil

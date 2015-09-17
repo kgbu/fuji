@@ -17,7 +17,6 @@ package message
 import (
 	"errors"
 	"fmt"
-	"regexp"
 	"unicode/utf8"
 
 	validator "gopkg.in/validator.v2"
@@ -48,12 +47,12 @@ func (topic TopicString) Validate() error {
 	if !utf8.ValidString(topic.Str) {
 		return errors.New("not a valid UTF8 string")
 	}
-	reu0 := regexp.MustCompile("\u0000")
-	if reu0.FindString(topic.Str) != "" {
+
+	if inidef.ReU0.FindString(topic.Str) != "" {
 		return errors.New("topic should NOT include \\U0000 character")
 	}
-	rewild := regexp.MustCompile("[+#]+")
-	if rewild.FindString(topic.Str) != "" {
+
+	if inidef.ReWild.FindString(topic.Str) != "" {
 		return errors.New("should not MQTT pub-topic include wildard character")
 	}
 	return nil
