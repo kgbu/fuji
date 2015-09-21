@@ -84,10 +84,9 @@ How To Release
 ==================
 
 1. git flow release start x.y.z
-2. update TAG in Makefile
-3. update CHANGELOG.rst
-4. git flow release finish x.y.z
-5. git push
+2. update CHANGELOG.rst
+3. git flow release finish x.y.z
+4. git push
 
 License
 ========
