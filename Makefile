@@ -10,7 +10,7 @@ FPM = fpm
 REPO="github.com/shiguredo/fuji/cmd/fuji"
 TEST_LIST := tests
 
-TAG=`git describe --abbrev=0 --tags`
+TAG=$(shell git describe --abbrev=0 --tags)
 ARTIFACTS=downloads
 BUILDDIR=build
 LDFLAGS=-ldflags "-X main.version `git describe --tags --always`"
