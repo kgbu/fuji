@@ -129,7 +129,7 @@ edison: linux_386
 	cp -p packages/config.simple.ini.example $(BUILDDIR)/packages_edison/etc/fuji-gw/config.ini
 
 	mkdir -p $(BUILDDIR)/packages_edison/CONTROL
-	sed -i -e 's/FUJI_GIT_TAG/$(TAG)/' packages/opkg_files/control
+	sed -e 's/FUJI_GIT_TAG/$(TAG)/' packages/opkg_files/control.in > packages/opkg_files/control
 	cp packages/opkg_files/control $(BUILDDIR)/packages_edison/CONTROL
 	cd packages/opkg_files && tar czf control.tar.gz control
 	cd $(BUILDDIR)/packages_edison/ && sudo ../../opkg-utils/opkg-build -o root -g root . /tmp
