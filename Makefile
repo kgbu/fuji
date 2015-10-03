@@ -3,7 +3,6 @@
 # - https://github.com/mackerelio/mackerel-agent/blob/master/Makefile
 
 # Followings are ommited from 'deps' because of need of sudo 
-# sudo gox -build-toolchain
 # sudo gem install fpm
 
 FPM = fpm
@@ -18,7 +17,6 @@ LDFLAGS=-ldflags "-X main.version=${TAG}-${REV}"
 
 ALL_LIST = $(TEST_LIST)
 
-GOXPATH=${GOPATH}/bin/gox
 SUDOPATH=${PATH}
 
 all: build test raspi raspi2 edison armadillo
@@ -75,7 +73,6 @@ linux_amd64: deps
 # 	echo 'freebsd amd64 build completed'
 
 # darwin_amd64: deps
-# 	sudo PATH=${SUDOPATH} ${GOXPATH} -build-toolchain -osarch=darwin/amd64
 # 	gox $(LDFLAGS) -os="darwin" -arch="amd64" -output=$(BUILDDIR)/darwin/fuji/fuji-gw $(REPO)
 # 	cp -p packages/config.simple.ini.example $(BUILDDIR)/darwin/fuji/config.ini.example
 # 	cd $(BUILDDIR)/darwin/ && tar zcvf ../../$(ARTIFACTS)/fuji-gw_$(TAG)_darwin_amd64.tar.gz fuji
