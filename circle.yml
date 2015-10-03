@@ -29,7 +29,7 @@ test:
   override:
     - go version
     - go get -u github.com/mitchellh/gox
-    - docker run -d -p 1883:1883 shiguredo/mosquitto ; sleep 20
+    - docker run -d -p 1883:1883 shiguredo/mosquitto-1.4.1 ; sleep 20
     - godep go build:
         pwd: ../.go_workspace/src/${REPO_PATH}
     - godep go test -coverpkg github.com/shiguredo/fuji ./...:
