@@ -14,7 +14,7 @@ TAG=0.2.3
 REV=`git rev-parse HEAD | cut -c1-7`
 ARTIFACTS=downloads
 BUILDDIR=build
-LDFLAGS=-ldflags "-X main.version ${TAG}-${REV}"
+LDFLAGS=-ldflags "-X main.version=${TAG}-${REV}"
 
 ALL_LIST = $(TEST_LIST)
 
