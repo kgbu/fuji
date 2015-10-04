@@ -163,5 +163,6 @@ deps:
 	godep restore
 
 clean:
+	rm -f fuji
 	rm -rf build downloads opkg-utils
 	rm -rf packages/opkg_files/control packages/opkg_files/control.tar.gz
