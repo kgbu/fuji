@@ -3,7 +3,6 @@
 # - https://github.com/mackerelio/mackerel-agent/blob/master/Makefile
 
 # Followings are ommited from 'deps' because of need of sudo 
-# sudo gox -build-toolchain
 # sudo gem install fpm
 
 FPM = fpm
@@ -18,7 +17,6 @@ LDFLAGS=-ldflags "-X main.version=${TAG}-${REV}"
 
 ALL_LIST = $(TEST_LIST)
 
-GOXPATH=${GOPATH}/bin/gox
 SUDOPATH=${PATH}
 
 all: build test raspi raspi2 edison armadillo
@@ -39,49 +37,42 @@ build: fmt deps
 ###### target by architecture
 
 arm5: deps
-	sudo GOARM=5 PATH=${SUDOPATH} ${GOXPATH} -build-toolchain -osarch=linux/arm
 	GOARM=5 gox $(LDFLAGS) -os="linux" -arch="arm" -output=$(BUILDDIR)/arm5/fuji/fuji-gw $(REPO)
 	cp -p packages/config.simple.ini.example $(BUILDDIR)/arm5/fuji/config.ini.example
 	cd $(BUILDDIR)/arm5/ && tar zcvf ../../$(ARTIFACTS)/fuji-gw_$(TAG)_arm5.tar.gz fuji
 	echo 'linux arm5 build completed'
 
 arm6: deps
-	sudo GOARM=6 PATH=${SUDOPATH} ${GOXPATH} -build-toolchain -osarch=linux/arm
 	GOARM=6 gox $(LDFLAGS) -os="linux" -arch="arm" -output=$(BUILDDIR)/arm6/fuji/fuji-gw $(REPO)
 	cp -p packages/config.simple.ini.example $(BUILDDIR)/arm6/fuji/config.ini.example
 	cd $(BUILDDIR)/arm6/ && tar zcvf ../../$(ARTIFACTS)/fuji-gw_$(TAG)_arm6.tar.gz fuji
 	echo 'linux arm6 build completed'
 
 arm7: deps
-	sudo GOARM=7 PATH=${SUDOPATH} ${GOXPATH} -build-toolchain -osarch=linux/arm
 	GOARM=7 gox $(LDFLAGS) -os="linux" -arch="arm" -output=$(BUILDDIR)/arm7/fuji/fuji-gw $(REPO)
 	cp -p packages/config.simple.ini.example $(BUILDDIR)/arm7/fuji/config.ini.example
 	cd $(BUILDDIR)/arm7/ && tar zcvf ../../$(ARTIFACTS)/fuji-gw_$(TAG)_arm7.tar.gz fuji
 	echo 'linux arm7 build completed'
 
 linux_386: deps
-	sudo PATH=${SUDOPATH} ${GOXPATH} -build-toolchain -osarch=linux/386
 	gox $(LDFLAGS) -os="linux" -arch="386" -output=$(BUILDDIR)/linux_386/fuji/fuji-gw $(REPO)
 	cp -p packages/config.simple.ini.example $(BUILDDIR)/linux_386/fuji/config.ini.example
 	cd $(BUILDDIR)/linux_386/ && tar zcvf ../../$(ARTIFACTS)/fuji-gw_$(TAG)_linux_386.tar.gz fuji
 	echo 'linux 386 build completed'
 
 linux_amd64: deps
-	sudo PATH=${SUDOPATH} ${GOXPATH} -build-toolchain -osarch=linux/amd64
 	gox $(LDFLAGS) -os="linux" -arch="amd64" -output=$(BUILDDIR)/linux_amd64/fuji/fuji-gw $(REPO)
 	cp -p packages/config.simple.ini.example $(BUILDDIR)/linux_amd64/fuji/config.ini.example
 	cd $(BUILDDIR)/linux_amd64/ && tar zcvf ../../$(ARTIFACTS)/fuji-gw_$(TAG)_linux_amd64.tar.gz fuji
 	echo 'linux amd64 build completed'
 
 # freebsd_amd64: deps
-# 	sudo PATH=${SUDOPATH} ${GOXPATH} -build-toolchain -osarch=freebsd/amd64
 # 	gox $(LDFLAGS) -os="freebsd" -arch="amd64" -output=$(BUILDDIR)/freebsd_amd64/fuji/fuji-gw $(REPO)
 # 	cp -p packages/config.simple.ini.example $(BUILDDIR)/freebsd_amd64/fuji/config.ini.example
 # 	cd $(BUILDDIR)/freebsd_amd64/ && tar zcvf ../../$(ARTIFACTS)/fuji-gw_$(TAG)_freebsd_amd64.tar.gz fuji
 # 	echo 'freebsd amd64 build completed'
 
 # darwin_amd64: deps
-# 	sudo PATH=${SUDOPATH} ${GOXPATH} -build-toolchain -osarch=darwin/amd64
 # 	gox $(LDFLAGS) -os="darwin" -arch="amd64" -output=$(BUILDDIR)/darwin/fuji/fuji-gw $(REPO)
 # 	cp -p packages/config.simple.ini.example $(BUILDDIR)/darwin/fuji/config.ini.example
 # 	cd $(BUILDDIR)/darwin/ && tar zcvf ../../$(ARTIFACTS)/fuji-gw_$(TAG)_darwin_amd64.tar.gz fuji
@@ -157,7 +148,7 @@ deps:
 	mkdir -p $(BUILDDIR)
 
 	go get -d -v -t ./...
-	go get github.com/mitchellh/gox
+	go get -u github.com/mitchellh/gox
 	go get github.com/kr/pty
 #	go get -u github.com/golang/lint/golint
 	godep restore
