@@ -2,7 +2,7 @@
 MQTT Gateway: Fuji
 ###########################
 
-:version: 0.2.3
+:version: 0.3.0
 
 .. image:: https://circleci.com/gh/shiguredo/fuji/tree/develop.svg?style=svg&circle-token=203d959fffaf8dcdc0c68642dde5329e55a47792
     :target: https://circleci.com/gh/shiguredo/fuji/tree/develop
@@ -39,16 +39,16 @@ Coming Soon
 Downloads
 =========
 
-:URL: https://github.com/shiguredo/fuji/releases/tag/0.2.3
+:URL: https://github.com/shiguredo/fuji/releases/tag/0.3.0
 
-- `fuji-gw_0.2.3_arm5.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_arm5.tar.gz>`_
-- `fuji-gw_0.2.3_arm6.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_arm6.tar.gz>`_
-- `fuji-gw_0.2.3_arm7.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_arm7.tar.gz>`_
-- `fuji-gw_0.2.3_edison_386.ipk <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_edison_386.ipk>`_
-- `fuji-gw_0.2.3_linux_386.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_linux_386.tar.gz>`_
-- `fuji-gw_0.2.3_linux_amd64.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_linux_amd64.tar.gz>`_
-- `fuji-gw_0.2.3_raspi2_arm7.deb <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_raspi2_arm7.deb>`_
-- `fuji-gw_0.2.3_raspi_arm6.deb <https://github.com/shiguredo/fuji/releases/download/0.2.3/fuji-gw_0.2.3_raspi_arm6.deb>`_
+- `fuji-gw_0.3.0_arm5.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.3.0/fuji-gw_0.3.0_arm5.tar.gz>`_
+- `fuji-gw_0.3.0_arm6.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.3.0/fuji-gw_0.3.0_arm6.tar.gz>`_
+- `fuji-gw_0.3.0_arm7.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.3.0/fuji-gw_0.3.0_arm7.tar.gz>`_
+- `fuji-gw_0.3.0_edison_386.ipk <https://github.com/shiguredo/fuji/releases/download/0.3.0/fuji-gw_0.3.0_edison_386.ipk>`_
+- `fuji-gw_0.3.0_linux_386.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.3.0/fuji-gw_0.3.0_linux_386.tar.gz>`_
+- `fuji-gw_0.3.0_linux_amd64.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.3.0/fuji-gw_0.3.0_linux_amd64.tar.gz>`_
+- `fuji-gw_0.3.0_raspi2_arm7.deb <https://github.com/shiguredo/fuji/releases/download/0.3.0/fuji-gw_0.3.0_raspi2_arm7.deb>`_
+- `fuji-gw_0.3.0_raspi_arm6.deb <https://github.com/shiguredo/fuji/releases/download/0.3.0/fuji-gw_0.3.0_raspi_arm6.deb>`_
 
 ChangeLog
 =========
@@ -85,9 +85,10 @@ How To Release
 
 1. git flow release start x.y.z
 2. update TAG in Makefile
-3. update CHANGELOG.rst
-4. git flow release finish x.y.z
-5. git push
+3. update CHANGELOG.rst and README.rst
+4. git commit
+5. git flow release finish x.y.z
+6. git push
 
 License
 ========
