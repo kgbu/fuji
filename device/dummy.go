@@ -35,7 +35,7 @@ type DummyDevice struct {
 	Broker     []*broker.Broker
 	BrokerName string
 	QoS        byte `validate:"min=0,max=2"`
-	InputPort  inidef.InputPortType
+	InputPort  InputPortType
 	Interval   int    `validate:"min=1"`
 	Payload    []byte `validate:"max=4096"`
 	Type       string `validate:"max=256"`
