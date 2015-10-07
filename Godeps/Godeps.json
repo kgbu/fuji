@@ -1,21 +1,11 @@
 {
 	"ImportPath": "github.com/shiguredo/fuji",
-	"GoVersion": "go1.4.2",
+	"GoVersion": "go1.5.1",
 	"Deps": [
 		{
-			"ImportPath": "code.google.com/p/go-uuid/uuid",
-			"Comment": "null-15",
-			"Rev": "35bc42037350f0078e3c974c6ea690f1926603ab"
-		},
-		{
-			"ImportPath": "code.google.com/p/go.net/websocket",
-			"Comment": "null-144",
-			"Rev": "ad01a6fcc8a19d3a4478c836895ffe883bd2ceab"
-		},
-		{
 			"ImportPath": "git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git",
-			"Comment": "v0.9.1-6-g80999ff",
-			"Rev": "80999ffa7f4a706e561f167c8f0b83e02b0e8ee3"
+			"Comment": "v0.9.1-14-g546c47a",
+			"Rev": "546c47a6d0e9492e77f6f37473d59c36a708e08b"
 		},
 		{
 			"ImportPath": "github.com/Sirupsen/logrus",
@@ -33,23 +23,31 @@
 			"Rev": "177219109c97e7920c933e21c9b25f874357b237"
 		},
 		{
+			"ImportPath": "github.com/pborman/uuid",
+			"Rev": "ca53cad383cad2479bbba7f7a1a05797ec1386e4"
+		},
+		{
 			"ImportPath": "github.com/shirou/gopsutil/common",
-			"Comment": "1.0.0-59-g79f4358",
-			"Rev": "79f4358f65ccbb3745d16bd8ef629324a4ac4cc1"
+			"Comment": "1.0.0-160-g82a76c0",
+			"Rev": "82a76c01e3af444ce144b30f228467976ef75864"
 		},
 		{
 			"ImportPath": "github.com/shirou/gopsutil/cpu",
-			"Comment": "1.0.0-59-g79f4358",
-			"Rev": "79f4358f65ccbb3745d16bd8ef629324a4ac4cc1"
+			"Comment": "1.0.0-160-g82a76c0",
+			"Rev": "82a76c01e3af444ce144b30f228467976ef75864"
 		},
 		{
 			"ImportPath": "github.com/shirou/gopsutil/mem",
-			"Comment": "1.0.0-59-g79f4358",
-			"Rev": "79f4358f65ccbb3745d16bd8ef629324a4ac4cc1"
+			"Comment": "1.0.0-160-g82a76c0",
+			"Rev": "82a76c01e3af444ce144b30f228467976ef75864"
 		},
 		{
 			"ImportPath": "github.com/tarm/serial",
 			"Rev": "e3f4c97bb7137112ddfc06cc44a939e45f41d941"
+		},
+		{
+			"ImportPath": "golang.org/x/net/websocket",
+			"Rev": "db8e4de5b2d6653f66aea53094624468caad15d2"
 		},
 		{
 			"ImportPath": "github.com/stretchr/testify/assert",

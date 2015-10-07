@@ -35,7 +35,7 @@ type SerialDevice struct {
 	Broker     []*broker.Broker
 	BrokerName string
 	QoS        byte `validate:"min=0,max=2"`
-	InputPort  inidef.InputPortType
+	InputPort  InputPortType
 	Serial     string `validate:"max=256"`
 	Baud       int    `validate:"min=0"`
 	Size       int    `validate:"min=0,max=256"`
@@ -85,8 +85,8 @@ func NewSerialDevice(section inidef.ConfigSection, brokers []*broker.Broker, dev
 		ret.QoS = byte(qos)
 	}
 	// TODO: check it is true or not
-	// ret.InputPort = inidef.InputPortType(inidef.INPUT_PORT_SERIAL)
-	ret.InputPort = inidef.InputPortType(inidef.INPUT_PORT_DUMMY)
+	// ret.InputPort = InputPortType(inidef.INPUT_PORT_SERIAL)
+	ret.InputPort = InputPortType(INPUT_PORT_DUMMY)
 	ret.Serial = values["serial"]
 	baud, err := strconv.Atoi(values["baud"])
 	if err != nil {

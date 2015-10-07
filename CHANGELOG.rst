@@ -3,6 +3,15 @@ ChangeLog
 #########
 
 
+0.3.0
+=====
+
+:release: 2015-10-07
+
+- update godep dependency and user latest paho MQTT library
+- Changed to use go 1.5
+- Customized cli.VersionPrinter
+
 0.2.3
 =====
 

@@ -278,14 +278,14 @@ func (b *Broker) GenerateTopic(msg *message.Message) (message.TopicString, error
 
 func (b *Broker) Close() error {
 	if b.MQTTClient != nil {
-		b.MQTTClient.Disconnect(250)
+		b.MQTTClient.Disconnect(250) // msec wait
 	}
 	return nil
 }
 
 func (b *Broker) FourceClose() error {
 	if b.MQTTClient != nil {
-		b.MQTTClient.ForceDisconnect()
+		b.MQTTClient.Disconnect(5) // msec wait
 	}
 	return nil
 }
