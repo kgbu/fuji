@@ -50,8 +50,8 @@ Windowsの場合
 まずお使いのOSが32bit版であるか、64bit版であるかを確認します。
 適応するMSIファイル（インストールパッケージ）の名前は次のようになりますので、ダウンロードページからダウンロードしてください。
 
-- 32bit版OS : go1.4.2.windows-386.msi
-- 64bit版OS : go1.4.2.windows-amd64.msi
+- 32bit版OS : go1.5.1.windows-386.msi
+- 64bit版OS : go1.5.1.windows-amd64.msi
 
 ダウンロードしたファイルを開けば、インストールが開始されます。
 
