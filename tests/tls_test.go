@@ -25,17 +25,17 @@ import (
 	"github.com/shiguredo/fuji/message"
 )
 
-// iniRetainTestCase はRetain機能のテストの条件を示すデータ型です。
+// tlsRetainTestCase はRetain機能のテストの条件を示すデータ型です。
 // iniString は設定ファイルの内容
 // expectedError はテストを実行したときに期待されるエラーの状態
 // message はテストが失敗した内容の説明
-type iniRetainTestCase struct {
+type tlsRetainTestCase struct {
 	iniStr        string
 	expectedError inidef.AnyError
 	message       string
 }
 
-var dummyDeviceTestcases = []iniRetainTestCase{
+var dummyDeviceTestcases = []tlsRetainTestCase{
 	// check device validation without retain flag
 	{
 		iniStr: `
@@ -91,8 +91,8 @@ var dummyDeviceTestcases = []iniRetainTestCase{
 		message:       "Retain flag could not be un-set."},
 }
 
-// generalIniRetainDummyDeviceTest checks retain function with dummy device
-func generalIniRetainDummyDeviceTest(test iniRetainTestCase, t *testing.T) {
+// generalTlsRetainDummyDeviceTest checks retain function with dummy device
+func generalTlsRetainDummyDeviceTest(test tlsRetainTestCase, t *testing.T) {
 	assert := assert.New(t)
 
 	conf, err := inidef.LoadConfigByte([]byte(test.iniStr))
@@ -110,7 +110,7 @@ func generalIniRetainDummyDeviceTest(test iniRetainTestCase, t *testing.T) {
 	}
 }
 
-// TestIniRetainDeviceAll tests a dummy device using test code
+// TestTlsRetainDeviceAll tests a dummy device using test code
 func TestTlsRetainDummyDeviceAll(t *testing.T) {
 	for _, testcase := range dummyDeviceTestcases {
 		generalTlsRetainDummyDeviceTest(testcase, t)
