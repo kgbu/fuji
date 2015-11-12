@@ -35,7 +35,7 @@ type tlsRetainTestCase struct {
 	message       string
 }
 
-var dummyDeviceTestcases = []tlsRetainTestCase{
+var dummyDeviceTlsTestcases = []tlsRetainTestCase{
 	// check device validation without retain flag
 	{
 		iniStr: `
@@ -112,7 +112,7 @@ func generalTlsRetainDummyDeviceTest(test tlsRetainTestCase, t *testing.T) {
 
 // TestTlsRetainDeviceAll tests a dummy device using test code
 func TestTlsRetainDummyDeviceAll(t *testing.T) {
-	for _, testcase := range dummyDeviceTestcases {
+	for _, testcase := range dummyDeviceTlsTestcases {
 		generalTlsRetainDummyDeviceTest(testcase, t)
 	}
 }
