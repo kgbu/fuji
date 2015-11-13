@@ -43,7 +43,7 @@ var dummyDeviceTlsTestcases = []tlsRetainTestCase{
 		host = localhost
 		port = 8883
 		tls = true
-		cafile = mosquitto/ca.pem
+		cacert = mosquitto/ca.pem
 
 		[device "hi/dummy"]
 		broker = sango
@@ -60,7 +60,7 @@ var dummyDeviceTlsTestcases = []tlsRetainTestCase{
 		host = localhost
 		port = 8883
 		tls = true
-		cafile = mosquitto/ca.pem
+		cacert = mosquitto/ca.pem
 
 		[device "hi/dummy"]
 		broker = sango
@@ -78,7 +78,7 @@ var dummyDeviceTlsTestcases = []tlsRetainTestCase{
 		host = localhost
 		port = 8883
 		tls = true
-		cafile = mosquitto/ca.pem
+		cacert = mosquitto/ca.pem
 
         [device "hi/dummy"]
 		broker = sango
