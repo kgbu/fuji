@@ -31,10 +31,10 @@ import (
 
 // publish test to broker on localhost
 // dummydevice is used as a source of published message
-func TestTlsConnectLocalPub(t *testing.T) {
+func TestTlsClientCertConnectLocalPub(t *testing.T) {
 	assert := assert.New(t)
 
-	conf, err := inidef.LoadConfig("tlsconnectlocalpub.ini")
+	conf, err := inidef.LoadConfig("tlsclientcertconnect.ini")
 	assert.Nil(err)
 	commandChannel := make(chan string)
 	go fuji.StartByFileWithChannel(conf, commandChannel)
@@ -48,7 +48,7 @@ func TestTlsConnectLocalPub(t *testing.T) {
 // 1. connect gateway to local broker
 // 2. send data from dummy
 // 3. check subscribe
-func TestTlsConnectLocalPubSub(t *testing.T) {
+func TestTlsClientCertConnectLocalPubSub(t *testing.T) {
 	assert := assert.New(t)
 
 	// pub/sub test to broker on localhost
@@ -56,7 +56,7 @@ func TestTlsConnectLocalPubSub(t *testing.T) {
 	// publised messages confirmed by subscriber
 
 	// get config
-	conf, err := inidef.LoadConfig("tlsconnectlocalpubsub.ini")
+	conf, err := inidef.LoadConfig("tlsclientcertconnectpubsub.ini")
 	assert.Nil(err)
 
 	// get Gateway
