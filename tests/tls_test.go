@@ -89,6 +89,26 @@ var dummyDeviceTlsTestcases = []tlsRetainTestCase{
 `,
 		expectedError: nil,
 		message:       "Retain flag could not be un-set."},
+	// check client auth settings
+	{
+		iniStr: `
+		[broker "sango/1"]
+		host = localhost
+		port = 9883
+		tls = true
+		cacert = mosquitto/ca.pem
+		client_cert = mosquitto/client.pem
+		client_key = mosquitto/client.key
+
+		[device "hi/dummy"]
+		broker = sango
+		qos = 0
+		retain = true
+		interval = 10
+		payload = Hello world.
+`,
+		expectedError: nil,
+		message:       "client certificate could not be set."},
 }
 
 // generalTlsRetainDummyDeviceTest checks retain function with dummy device
