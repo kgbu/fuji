@@ -46,6 +46,8 @@ type Broker struct {
 	WillMessage   []byte `validate:"max=256"`
 	Tls           bool
 	CaCert        string `validate:"max=256"`
+	ClientCert    string `validate:"max=256"`
+	ClientKey     string `validate:"max=256"`
 	TLSConfig     *tls.Config
 	Subscribed    Subscribed // list of subscribed topics
 
@@ -79,9 +81,9 @@ func init() {
 }
 
 // NewTLSConfig returns TLS config from CA Cert file path.
-func NewTLSConfig(caCertFilePath string) (*tls.Config, error) {
+func NewTLSConfig(b *Broker) (*tls.Config, error) {
 	certPool := x509.NewCertPool()
-	pemCerts, err := ioutil.ReadFile(caCertFilePath)
+	pemCerts, err := ioutil.ReadFile(b.CaCert)
 	if err != nil {
 		return nil, inidef.Error("Cert File could not be read.")
 	}
@@ -89,16 +91,25 @@ func NewTLSConfig(caCertFilePath string) (*tls.Config, error) {
 	if appendCertOk != true {
 		return nil, inidef.Error("Server Certificate parse failed")
 	}
-
-	// only server certificate checked
-	return &tls.Config{
+	ret := &tls.Config{
 		RootCAs:    certPool,
 		ClientAuth: tls.NoClientCert,
 		ClientCAs:  nil,
 		// InsecureSkipVerify = verify that cert contents
 		// match server. IP matches what is in cert etc.
 		InsecureSkipVerify: true,
-	}, nil
+	}
+	if b.ClientCert != "" {
+		// client certificate also checked
+		cert, err := tls.LoadX509KeyPair(b.ClientCert, b.ClientKey)
+		if err != nil {
+			return nil, err
+		}
+		ret.ClientAuth = tls.RequireAndVerifyClientCert
+		ret.Certificates = []tls.Certificate{cert}
+		ret.ClientCAs = certPool
+	}
+	return ret, nil
 }
 
 // NewBrokers returns []*Broker from inidef.Config.
@@ -159,7 +170,13 @@ func NewBrokers(conf inidef.Config, gwChan chan message.Message) (Brokers, error
 			// validate certificate
 			broker.Tls = true
 			broker.CaCert = values["cacert"]
-			broker.TLSConfig, err = NewTLSConfig(broker.CaCert)
+			if values["client_cert"] != "" && values["client_key"] != "" {
+				// client certificate authentication
+
+				broker.ClientCert = values["client_cert"]
+				broker.ClientKey = values["client_key"]
+			}
+			broker.TLSConfig, err = NewTLSConfig(broker)
 			if err != nil {
 				return nil, err
 			}
