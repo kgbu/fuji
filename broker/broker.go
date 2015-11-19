@@ -43,7 +43,7 @@ type Broker struct {
 	Password      string `validate:"max=256"`
 	RetryInterval int    `validate:"min=0"`
 	TopicPrefix   string `validate:"max=256"`
-	WillMessage   []byte `validate:"max=256"`
+	WillMessage   inidef.NilOrString
 	Tls           bool
 	CaCert        string `validate:"max=256"`
 	ClientCert    string `validate:"max=256"`
@@ -123,10 +123,6 @@ func NewBrokers(conf inidef.Config, gwChan chan message.Message) (Brokers, error
 		}
 		values := section.Values
 
-		willMsg, err := utils.ParsePayload(values["will_message"])
-		if err != nil {
-			log.Warnf("will_message, %v", err)
-		}
 		broker := &Broker{
 			GatewayName:   conf.GatewayName,
 			Name:          section.Name,
@@ -134,7 +130,7 @@ func NewBrokers(conf inidef.Config, gwChan chan message.Message) (Brokers, error
 			Username:      values["username"],
 			Password:      values["password"],
 			TopicPrefix:   values["topic_prefix"],
-			WillMessage:   willMsg,
+			WillMessage:   nil,
 			Tls:           false,
 			CaCert:        "",
 			RetryInterval: int(0),
@@ -142,11 +138,24 @@ func NewBrokers(conf inidef.Config, gwChan chan message.Message) (Brokers, error
 			GwChan:        gwChan,
 		}
 		priority := 1
+
+		for k, v := range values {
+			if k == "will_message" {
+				w, err := utils.ParsePayload(v)
+				if err != nil {
+					log.Warnf("will_message, %v", err)
+				}
+				broker.WillMessage = w
+				log.Debugf("will_message, %v", broker.WillMessage)
+			}
+		}
+
 		if section.Arg != "" {
-			priority, err = strconv.Atoi(section.Arg)
+			p, err := strconv.Atoi(section.Arg)
 			if err != nil {
 				return nil, fmt.Errorf("broker priority parse failed, %v", section.Arg)
 			}
+			priority = p
 		}
 		broker.Priority = int(priority)
 
@@ -328,10 +337,34 @@ func MQTTConnect(gwName string, b *Broker) (*MQTT.Client, error) {
 	if !inidef.IsNil(b.WillMessage) {
 		willTopic := strings.Join([]string{b.TopicPrefix, gwName, "will"}, "/")
 		willQoS := 0
-		opts.SetBinaryWill(willTopic, b.WillMessage, byte(willQoS), true)
+		opts.SetBinaryWill(willTopic, []byte(inidef.String(b.WillMessage)), byte(willQoS), true)
 	}
 	opts.SetOnConnectHandler(b.SubscribeOnConnect)
 	opts.SetConnectionLostHandler(b.onConnectionLost)
+
+	log.Debugln("Option Obj:\n",
+		"\nServers: ", opts.Servers,
+		"\nClientID: ", opts.ClientID,
+		"\nUsername: ", opts.Username,
+		"\nPassword: ", opts.Password,
+		"\nCleanSession: ", opts.CleanSession,
+		"\nOrder: ", opts.Order,
+		"\nWillEnabled: ", opts.WillEnabled,
+		"\nWillTopic: ", opts.WillTopic,
+		"\nWillPayload: ", opts.WillPayload,
+		"\nWillQos: ", opts.WillQos,
+		"\nWillRetained: ", opts.WillRetained,
+		"\nProtocolVersion: ", opts.ProtocolVersion,
+		"\nTLSConfig: ", opts.TLSConfig,
+		"\nKeepAlive: ", opts.KeepAlive,
+		"\nConnectTimeout: ", opts.ConnectTimeout,
+		"\nMaxReconnectInterval: ", opts.MaxReconnectInterval,
+		"\nAutoReconnect: ", opts.AutoReconnect,
+		"\nStore: ", opts.Store,
+		"\nDefaultPublishHander: ", opts.DefaultPublishHander,
+		"\nOnConnect: ", opts.OnConnect,
+		"\nOnConnectionLost: ", opts.OnConnectionLost,
+		"\nWriteTimeout: ", opts.WriteTimeout)
 
 	client := MQTT.NewClient(opts)
 	return client, nil
