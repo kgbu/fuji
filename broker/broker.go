@@ -43,7 +43,8 @@ type Broker struct {
 	Password      string `validate:"max=256"`
 	RetryInterval int    `validate:"min=0"`
 	TopicPrefix   string `validate:"max=256"`
-	WillMessage   inidef.NilOrString
+	IsWill        bool
+	WillMessage   []byte `validate:"max=256"`
 	Tls           bool
 	CaCert        string `validate:"max=256"`
 	ClientCert    string `validate:"max=256"`
@@ -130,26 +131,28 @@ func NewBrokers(conf inidef.Config, gwChan chan message.Message) (Brokers, error
 			Username:      values["username"],
 			Password:      values["password"],
 			TopicPrefix:   values["topic_prefix"],
-			WillMessage:   nil,
+			IsWill:        false,
+			WillMessage:   []byte{},
 			Tls:           false,
 			CaCert:        "",
 			RetryInterval: int(0),
 			Subscribed:    NewSubscribed(),
 			GwChan:        gwChan,
 		}
-		priority := 1
 
 		for k, v := range values {
 			if k == "will_message" {
+				broker.IsWill = true
 				w, err := utils.ParsePayload(v)
 				if err != nil {
-					log.Warnf("will_message, %v", err)
+					log.Warnf("parse error will_message, %v", err)
 				}
+				log.Debugf("will_message, %v", w)
 				broker.WillMessage = w
-				log.Debugf("will_message, %v", broker.WillMessage)
 			}
 		}
 
+		priority := 1
 		if section.Arg != "" {
 			p, err := strconv.Atoi(section.Arg)
 			if err != nil {
@@ -334,10 +337,10 @@ func MQTTConnect(gwName string, b *Broker) (*MQTT.Client, error) {
 
 	opts.SetUsername(b.Username)
 	opts.SetPassword(b.Password)
-	if !inidef.IsNil(b.WillMessage) {
+	if b.IsWill {
 		willTopic := strings.Join([]string{b.TopicPrefix, gwName, "will"}, "/")
 		willQoS := 0
-		opts.SetBinaryWill(willTopic, []byte(inidef.String(b.WillMessage)), byte(willQoS), true)
+		opts.SetBinaryWill(willTopic, b.WillMessage, byte(willQoS), true)
 	}
 	opts.SetOnConnectHandler(b.SubscribeOnConnect)
 	opts.SetConnectionLostHandler(b.onConnectionLost)

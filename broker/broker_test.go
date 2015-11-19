@@ -39,7 +39,7 @@ func TestNewBrokersSingle(t *testing.T) {
 	assert.Equal("sango", b[0].Name)
 	assert.Equal(2, b[0].Priority)
 	assert.Equal("", b[0].TopicPrefix)
-	assert.Equal([]byte{}, b[0].WillMessage)
+	assert.Equal(false, b[0].IsWill)
 }
 
 func TestNewBrokersSettings(t *testing.T) {
